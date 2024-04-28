@@ -8,16 +8,17 @@ import com.fasterxml.jackson.jr.ob.JSON;
 
 @RestController
 public class TestController {
-    @CrossOrigin(origins = "http://localhost:8100")
+    private static final String FRONT_END_URL = "http://localhost:8100";
+
+    @CrossOrigin(origins = FRONT_END_URL)
     @GetMapping("/test")
-    public String index() {
+    public String getTestJSON() {
         String json = null;
         try {
             json = JSON.std.with(JSON.Feature.PRETTY_PRINT_OUTPUT)
                     .composeString()
                     .startObject()
                     .put("test", "testString")
-                    .put("test2", 1)
                     .end()
                     .finish();
         } catch (Exception e) {
