@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.jr.ob.JSON;
 
 @RestController
-public class HelloController {
+public class TestController {
     @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping("/test")
     public String index() {
