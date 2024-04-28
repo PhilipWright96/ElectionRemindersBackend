@@ -8,3 +8,5 @@ Technology:
 Java 21, Maven 3.8.5, and Spring Boot
 
 How to get started: 
+Simply start the application in "Application.java". Right now - this will turn on a few endpoints 
+which will run on localhost:8080. 
