@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.election.reminders.dtos.TestRequest;
+import com.election.reminders.dtos.requests.TestRequest;
 import com.fasterxml.jackson.jr.ob.JSON;
 
 @RestController
