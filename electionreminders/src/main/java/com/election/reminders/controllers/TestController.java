@@ -11,9 +11,7 @@ import com.fasterxml.jackson.jr.ob.JSON;
 
 @RestController
 public class TestController {
-    private static final String FRONT_END_URL = "http://localhost:8100";
-
-    @CrossOrigin(origins = FRONT_END_URL)
+    @CrossOrigin(origins = Constants.FRONT_END_URL)
     @GetMapping("/test")
     public String getTestJSON() {
         String json = null;
@@ -30,7 +28,7 @@ public class TestController {
         return json;
     }
 
-    @CrossOrigin(origins = FRONT_END_URL)
+    @CrossOrigin(origins = Constants.FRONT_END_URL)
     @PostMapping("/testPOST")
     public String postTestJSON(@RequestBody TestRequest requestBody) {
         System.out.println(requestBody);
