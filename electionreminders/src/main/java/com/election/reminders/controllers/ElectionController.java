@@ -1,10 +1,14 @@
 package com.election.reminders.controllers;
 
+import java.util.Arrays;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.jr.ob.JSON;
+import com.election.reminders.dtos.responses.TestResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class ElectionController {
@@ -12,15 +16,17 @@ public class ElectionController {
     @GetMapping("/electionsForCountry")
     public String getElectionsForCountry() {
         String json = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        TestResponse testResponse1 = new TestResponse();
+        testResponse1.electionName = "Germany";
+
+        TestResponse testResponse2 = new TestResponse();
+        testResponse2.electionName = "France";
+
         try {
-            json = JSON.std.with(JSON.Feature.PRETTY_PRINT_OUTPUT)
-                    .composeString()
-                    .startObject()
-                    .put("electionName", "a")
-                    .end()
-                    .finish();
-        } catch (Exception e) {
-            System.out.println("Exception in GET request " + e.getMessage());
+            json = objectMapper.writeValueAsString(Arrays.asList(testResponse1, testResponse2));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
         return json;
     }
