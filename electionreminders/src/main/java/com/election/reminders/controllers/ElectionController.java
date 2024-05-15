@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.election.reminders.dtos.responses.TestResponse;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ElectionController {
     @CrossOrigin(origins = Constants.FRONT_END_URL)
     @GetMapping("/electionsForCountry")
-    public String getElectionsForCountry() {
+    public String getElectionsForCountry(@RequestParam String countryName) {
         String json = null;
         ObjectMapper objectMapper = new ObjectMapper();
         TestResponse testResponse1 = new TestResponse();
