@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JavaToJSONConverter {
+public class JacksonJavaToJSONConverter implements IJavaToJSONConverter {
     public <T> String convertJavaToJSON(List<T> objectsToConvertToJSON) {
         final ObjectMapper objectMapper = new ObjectMapper();
 
