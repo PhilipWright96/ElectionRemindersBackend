@@ -27,7 +27,7 @@ public class ElectionController {
     public String getElectionsForCountry(@RequestParam String countryName) {
         // Should Election Service and Java Converter be beans?
         final List<TestResponse> electionsForCountry = electionService.getElectionsForCountry(countryName);
-        final IJavaToJSONConverter javaToJSONConveter = new JacksonJavaToJSONConverter();
-        return javaToJSONConveter.convertJavaToJSON(electionsForCountry);
+        final IJavaToJSONConverter javaToJSONConverter = new JacksonJavaToJSONConverter();
+        return javaToJSONConverter.convertJavaToJSON(electionsForCountry);
     }
 }
