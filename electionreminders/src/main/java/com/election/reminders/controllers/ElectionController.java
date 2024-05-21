@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.election.reminders.dtos.responses.TestResponse;
 import com.election.reminders.services.ElectionService;
-import com.election.reminders.utils.JavaToJSONConverter;
+import com.election.reminders.utils.IJavaToJSONConverter;
+import com.election.reminders.utils.JacksonJavaToJSONConverter;
 
 @RestController
 public class ElectionController {
     @CrossOrigin(origins = Constants.FRONT_END_URL)
     @GetMapping("/electionsForCountry")
     public String getElectionsForCountry(@RequestParam String countryName) {
-        // Should Election Service and Java Converter be a bean?
+        // Should Election Service and Java Converter be beans?
         final List<TestResponse> electionsForCountry = new ElectionService().getElectionsForCountry(countryName);
-        return new JavaToJSONConverter().convertJavaToJSON(electionsForCountry);
+        final IJavaToJSONConverter javaToJSONConveter = new JacksonJavaToJSONConverter();
+        return javaToJSONConveter.convertJavaToJSON(electionsForCountry);
     }
 }
