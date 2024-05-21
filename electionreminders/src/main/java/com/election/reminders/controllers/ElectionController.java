@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.election.reminders.dtos.responses.TestResponse;
+import com.election.reminders.dtos.jackson.responses.TestResponse;
 import com.election.reminders.services.ElectionService;
 import com.election.reminders.utils.IJavaToJSONConverter;
 import com.election.reminders.utils.JacksonJavaToJSONConverter;

@@ -1,4 +1,4 @@
-package com.election.reminders.dtos.responses;
+package com.election.reminders.dtos.jackson.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,6 +1,6 @@
 package com.election.reminders.services;
 
-import com.election.reminders.dtos.responses.TestResponse;
+import com.election.reminders.dtos.jackson.responses.TestResponse;
 import com.election.reminders.repositories.ElectionRepository;
 
 import java.util.List;

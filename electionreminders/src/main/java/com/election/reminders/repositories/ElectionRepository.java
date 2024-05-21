@@ -2,7 +2,7 @@ package com.election.reminders.repositories;
 
 import java.util.List;
 
-import com.election.reminders.dtos.responses.TestResponse;
+import com.election.reminders.dtos.jackson.responses.TestResponse;
 
 public class ElectionRepository {
     public List<TestResponse> getElectionsForCountry(String countryName) {
