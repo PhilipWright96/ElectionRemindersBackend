@@ -11,23 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.election.reminders.dtos.jackson.responses.TestResponse;
 import com.election.reminders.services.ElectionService;
 import com.election.reminders.utils.IJavaToJSONConverter;
-import com.election.reminders.utils.JacksonJavaToJSONConverter;
 
 @RestController
 public class ElectionController {
     private final ElectionService electionService;
+    private final IJavaToJSONConverter javaToJSONConverter;
 
     @Autowired
-    public ElectionController(ElectionService electionService) {
+    public ElectionController(ElectionService electionService, IJavaToJSONConverter javaToJSONConverter) {
         this.electionService = electionService;
+        this.javaToJSONConverter = javaToJSONConverter;
     }
 
     @CrossOrigin(origins = Constants.FRONT_END_URL)
     @GetMapping("/electionsForCountry")
     public String getElectionsForCountry(@RequestParam String countryName) {
-        // Should Election Service and Java Converter be beans?
         final List<TestResponse> electionsForCountry = electionService.getElectionsForCountry(countryName);
-        final IJavaToJSONConverter javaToJSONConverter = new JacksonJavaToJSONConverter();
         return javaToJSONConverter.convertJavaToJSON(electionsForCountry);
     }
 }
