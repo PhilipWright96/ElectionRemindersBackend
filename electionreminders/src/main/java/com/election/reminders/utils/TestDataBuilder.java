@@ -2,20 +2,23 @@ package com.election.reminders.utils;
 
 import java.util.List;
 
-import com.election.reminders.builders.TestResponseBuilder;
-import com.election.reminders.dtos.jackson.responses.TestResponse;
+import com.election.reminders.builders.ElectionInformationBuilder;
+import com.election.reminders.dtos.jackson.responses.ElectionInformation;
 
 public class TestDataBuilder {
-    public static List<TestResponse> constructDummyTestResponses() {
-        TestResponse testResponse1 = new TestResponseBuilder().electionName("A").electionDate("Date for A")
+    public static List<ElectionInformation> constructDummyElectionInformations() {
+        ElectionInformation ElectionInformation1 = new ElectionInformationBuilder().electionName("A")
+                .electionDate("Date for A")
                 .electionSummary("Summary for A").isRepeating(false).build();
 
-        TestResponse testResponse2 = new TestResponseBuilder().electionName("B").electionDate("Date for B")
+        ElectionInformation ElectionInformation2 = new ElectionInformationBuilder().electionName("B")
+                .electionDate("Date for B")
                 .electionSummary("Summary for B").isRepeating(true).repeatingEvery("3 years").build();
 
-        TestResponse testResponse3 = new TestResponseBuilder().electionName("C").electionDate("Date for C")
+        ElectionInformation ElectionInformation3 = new ElectionInformationBuilder().electionName("C")
+                .electionDate("Date for C")
                 .electionSummary("Summary for C").isRepeating(true).repeatingEvery("3 years").build();
 
-        return List.of(testResponse1, testResponse2, testResponse3);
+        return List.of(ElectionInformation1, ElectionInformation2, ElectionInformation3);
     }
 }

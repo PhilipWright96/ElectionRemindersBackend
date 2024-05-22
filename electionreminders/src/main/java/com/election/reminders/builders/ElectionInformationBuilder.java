@@ -1,15 +1,15 @@
 package com.election.reminders.builders;
 
-import com.election.reminders.dtos.jackson.responses.TestResponse;
+import com.election.reminders.dtos.jackson.responses.ElectionInformation;
 
-public class TestResponseBuilder {
+public class ElectionInformationBuilder {
     private String electionName;
     private String electionDate;
     private String electionSummary;
     private Boolean isRepeating;
     private String repeatingEvery;
 
-    public TestResponseBuilder electionName(String electionName) {
+    public ElectionInformationBuilder electionName(String electionName) {
         this.electionName = electionName;
         return this;
     }
@@ -18,7 +18,7 @@ public class TestResponseBuilder {
         return this.electionName;
     }
 
-    public TestResponseBuilder electionDate(String electionDate) {
+    public ElectionInformationBuilder electionDate(String electionDate) {
         this.electionDate = electionDate;
         return this;
     }
@@ -27,7 +27,7 @@ public class TestResponseBuilder {
         return this.electionDate;
     }
 
-    public TestResponseBuilder electionSummary(String electionSummary) {
+    public ElectionInformationBuilder electionSummary(String electionSummary) {
         this.electionSummary = electionSummary;
         return this;
     }
@@ -36,7 +36,7 @@ public class TestResponseBuilder {
         return this.electionSummary;
     }
 
-    public TestResponseBuilder isRepeating(Boolean isRepeating) {
+    public ElectionInformationBuilder isRepeating(Boolean isRepeating) {
         this.isRepeating = isRepeating;
         return this;
     }
@@ -45,7 +45,7 @@ public class TestResponseBuilder {
         return this.isRepeating;
     }
 
-    public TestResponseBuilder repeatingEvery(String repeatingEvery) {
+    public ElectionInformationBuilder repeatingEvery(String repeatingEvery) {
         this.repeatingEvery = repeatingEvery;
         return this;
     }
@@ -54,7 +54,7 @@ public class TestResponseBuilder {
         return this.repeatingEvery;
     }
 
-    public TestResponse build() {
-        return new TestResponse(this);
+    public ElectionInformation build() {
+        return new ElectionInformation(this);
     }
 }

@@ -1,10 +1,10 @@
 package com.election.reminders.dtos.jackson.responses;
 
-import com.election.reminders.builders.TestResponseBuilder;
+import com.election.reminders.builders.ElectionInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TestResponse {
-    public TestResponse(TestResponseBuilder builder) {
+public class ElectionInformation {
+    public ElectionInformation(ElectionInformationBuilder builder) {
         this.electionName = builder.getElectionName();
         this.electionDate = builder.getElectionDate();
         this.electionSummary = builder.getElectionSummary();
