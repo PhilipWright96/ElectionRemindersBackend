@@ -13,7 +13,10 @@ public class TestDataBuilder {
         TestResponse testResponse2 = new TestResponseBuilder().electionName("B").electionDate("Date for B")
                 .electionSummary("Summary for B").isRepeating(true).repeatingEvery("3 years").build();
 
-        final List<TestResponse> responses = List.of(testResponse1, testResponse2);
+        TestResponse testResponse3 = new TestResponseBuilder().electionName("C").electionDate("Date for C")
+                .electionSummary("Summary for C").isRepeating(true).repeatingEvery("3 years").build();
+
+        final List<TestResponse> responses = List.of(testResponse1, testResponse2, testResponse3);
         return responses;
     }
 }
