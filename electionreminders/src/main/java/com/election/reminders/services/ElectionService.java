@@ -1,6 +1,6 @@
 package com.election.reminders.services;
 
-import com.election.reminders.dtos.jackson.responses.TestResponse;
+import com.election.reminders.dtos.jackson.responses.ElectionInformation;
 import com.election.reminders.repositories.ElectionRepository;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class ElectionService {
         this.electionRepository = electionRepository;
     }
 
-    public List<TestResponse> getElectionsForCountry(String countryName) {
+    public List<ElectionInformation> getElectionsForCountry(String countryName) {
         return electionRepository.getElectionsForCountry(countryName);
     }
 }

@@ -4,19 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.election.reminders.dtos.jackson.responses.TestResponse;
+import com.election.reminders.dtos.jackson.responses.ElectionInformation;
+import com.election.reminders.utils.TestDataBuilder;
 
 @Repository
 public class ElectionRepository {
-    public List<TestResponse> getElectionsForCountry(String countryName) {
-        TestResponse testResponse1 = new TestResponse();
-        testResponse1.electionName = "Germany";
-
-        TestResponse testResponse2 = new TestResponse();
-        testResponse2.electionName = "France";
-
-        final List<TestResponse> responses = List.of(testResponse1, testResponse2);
-        return responses;
+    public List<ElectionInformation> getElectionsForCountry(String countryName) {
+        return TestDataBuilder.constructDummyElectionInformations();
     }
-
 }
