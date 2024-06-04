@@ -17,7 +17,7 @@ public class ReminderService {
         this.reminderRepository = reminderRepository;
     }
 
-    public List<ReminderInformation> getRemindersForUser(String userName) {
-        return reminderRepository.getRemindersForUser(userName);
+    public List<ReminderInformation> getRemindersForUser(String userId) {
+        return reminderRepository.getRemindersForUser(userId);
     }
 }

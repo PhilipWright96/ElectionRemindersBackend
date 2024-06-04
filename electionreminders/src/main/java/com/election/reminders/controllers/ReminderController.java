@@ -25,8 +25,8 @@ public class ReminderController {
 
     @CrossOrigin(origins = Constants.FRONT_END_URL)
     @GetMapping("/remindersForUser")
-    public String getRemindersForUser(@RequestParam String userName) {
-        final List<ReminderInformation> remindersForUser = reminderService.getRemindersForUser(userName);
+    public String getRemindersForUser(@RequestParam String userId) {
+        final List<ReminderInformation> remindersForUser = reminderService.getRemindersForUser(userId);
         return javaToJSONConverter.convertJavaToJSON(remindersForUser);
     }
 }

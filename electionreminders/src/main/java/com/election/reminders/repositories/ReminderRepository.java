@@ -9,7 +9,7 @@ import com.election.reminders.utils.TestDataBuilder;
 
 @Repository
 public class ReminderRepository {
-    public List<ReminderInformation> getRemindersForUser(String userName) {
+    public List<ReminderInformation> getRemindersForUser(String userId) {
         return TestDataBuilder.constructDummyReminderInformations();
     }
 }
