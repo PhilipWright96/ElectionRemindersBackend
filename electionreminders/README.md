@@ -8,6 +8,7 @@ Technology:
 Java 21, Maven 3.8.5, and Spring Boot
 
 How to get started: 
-Simply start the application in "Application.java". Right now - this will turn on a few test endpoints 
+Firstly build the project. You can do this with the VSCODE IDE when you simply press shift,ctrl, p and select the "Java: Rebuild Projects" command.
+Then simply start the application in "Application.java". Right now - this will turn on a few test endpoints 
 which will run on localhost:8080. Front end components can call these endpoints and receive dummy data. 
 There should be a start button when you view the class "Application.java". 
