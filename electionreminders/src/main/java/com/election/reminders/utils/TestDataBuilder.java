@@ -27,21 +27,24 @@ public class TestDataBuilder {
 
         public static List<ReminderInformation> constructDummyReminderInformations() {
                 ReminderInformation reminderInformation1 = new ReminderInformationBuilder()
-                                .reminderName("Reminder For A").electionId("A")
-                                .reminderDate("Date for A")
-                                .createdOn("Created on A")
+                                .reminderName("Reminder For A")
+                                .electionId("A")
+                                .reminderDate(LocalDateTime.of(2024, 1, 1, 1, 0))
+                                .createdOn(LocalDateTime.of(2024, 1, 2, 1, 0))
                                 .reminderDetails("Details for reminder A").build();
 
                 ReminderInformation reminderInformation2 = new ReminderInformationBuilder()
-                                .reminderName("Reminder For B").electionId("B")
-                                .reminderDate("Date for B")
-                                .createdOn("Created on B")
+                                .reminderName("Reminder For B")
+                                .electionId("B")
+                                .reminderDate(LocalDateTime.of(2024, 2, 1, 1, 0))
+                                .createdOn(LocalDateTime.of(2024, 2, 2, 1, 0))
                                 .reminderDetails("Details for reminder B").build();
 
                 ReminderInformation reminderInformation3 = new ReminderInformationBuilder()
-                                .reminderName("Reminder For C").electionId("C")
-                                .reminderDate("Date for C")
-                                .createdOn("Created on C")
+                                .reminderName("Reminder For C")
+                                .electionId("C")
+                                .reminderDate(LocalDateTime.of(2024, 3, 1, 1, 0))
+                                .createdOn(LocalDateTime.of(2024, 3, 2, 1, 0))
                                 .reminderDetails("Details for reminder c").build();
 
                 return List.of(reminderInformation1, reminderInformation2, reminderInformation3);
