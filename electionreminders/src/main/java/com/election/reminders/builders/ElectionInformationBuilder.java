@@ -1,10 +1,12 @@
 package com.election.reminders.builders;
 
+import java.time.LocalDateTime;
+
 import com.election.reminders.dtos.jackson.responses.ElectionInformation;
 
 public class ElectionInformationBuilder {
     private String electionName;
-    private String electionDate;
+    private LocalDateTime electionDate;
     private String electionSummary;
     private Boolean isRepeating;
     private String repeatingEvery;
@@ -18,12 +20,12 @@ public class ElectionInformationBuilder {
         return this.electionName;
     }
 
-    public ElectionInformationBuilder electionDate(String electionDate) {
+    public ElectionInformationBuilder electionDate(LocalDateTime electionDate) {
         this.electionDate = electionDate;
         return this;
     }
 
-    public String getElectionDate() {
+    public LocalDateTime getElectionDate() {
         return this.electionDate;
     }
 
