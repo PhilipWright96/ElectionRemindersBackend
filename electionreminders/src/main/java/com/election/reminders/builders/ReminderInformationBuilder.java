@@ -1,12 +1,14 @@
 package com.election.reminders.builders;
 
+import java.time.LocalDateTime;
+
 import com.election.reminders.dtos.jackson.responses.ReminderInformation;
 
 public class ReminderInformationBuilder {
     private String reminderName;
     private String electionId;
-    private String reminderDate;
-    private String createdOn;
+    private LocalDateTime reminderDate;
+    private LocalDateTime createdOn;
     private String reminderDetails;
 
     public ReminderInformationBuilder reminderName(String reminderName) {
@@ -27,21 +29,21 @@ public class ReminderInformationBuilder {
         return this.electionId;
     }
 
-    public ReminderInformationBuilder reminderDate(String reminderDate) {
+    public ReminderInformationBuilder reminderDate(LocalDateTime reminderDate) {
         this.reminderDate = reminderDate;
         return this;
     }
 
-    public String getReminderDate() {
+    public LocalDateTime getReminderDate() {
         return this.reminderDate;
     }
 
-    public ReminderInformationBuilder createdOn(String createdOn) {
+    public ReminderInformationBuilder createdOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
         return this;
     }
 
-    public String getCreatedOn() {
+    public LocalDateTime getCreatedOn() {
         return this.createdOn;
     }
 
