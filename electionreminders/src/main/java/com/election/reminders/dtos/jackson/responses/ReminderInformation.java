@@ -1,5 +1,7 @@
 package com.election.reminders.dtos.jackson.responses;
 
+import java.time.LocalDateTime;
+
 import com.election.reminders.builders.ReminderInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -17,9 +19,9 @@ public class ReminderInformation {
     @JsonProperty("electionId")
     public String electionId;
     @JsonProperty("createdOn")
-    public String createdOn;
+    public LocalDateTime createdOn;
     @JsonProperty("reminderDate")
-    public String reminderDate;
+    public LocalDateTime reminderDate;
     @JsonProperty("reminderDetails")
     public String reminderDetails;
 }
