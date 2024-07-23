@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.election.reminders.dtos.jackson.responses.ElectionInformation;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,8 +17,10 @@ public class ElectionInformationSerializationTest {
     @Test
     void electionInformation_withValuesForAllFields_objectIsCorrectlySerializedToJSON() {
         // Given
+        final UUID randomElectionId = UUID.fromString("f2be4dea-2e1f-403e-ad82-42f737daa0eb");
         final ElectionInformationBuilder builder = new ElectionInformationBuilder()
                 .electionName("Election abc")
+                .electionId(randomElectionId)
                 .electionDate(LocalDateTime.of(2024, 1, 1, 0, 0))
                 .electionSummary("This is a summary of election abc.")
                 .isRepeating(true)
@@ -39,6 +42,7 @@ public class ElectionInformationSerializationTest {
 
         // Then
         final String expectedJsonString = "{"
+                + "\"electionId\":\"f2be4dea-2e1f-403e-ad82-42f737daa0eb\","
                 + "\"electionName\":\"Election abc\","
                 + "\"electionDate\":\"2024-01-01T00:00:00\","
                 + "\"electionSummary\":\"This is a summary of election abc.\","

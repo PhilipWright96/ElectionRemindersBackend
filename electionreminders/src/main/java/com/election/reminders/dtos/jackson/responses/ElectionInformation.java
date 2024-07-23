@@ -1,12 +1,14 @@
 package com.election.reminders.dtos.jackson.responses;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ElectionInformation {
     public ElectionInformation(ElectionInformationBuilder builder) {
+        this.electionId = builder.getElectionId();
         this.electionName = builder.getElectionName();
         this.electionDate = builder.getElectionDate();
         this.electionSummary = builder.getElectionSummary();
@@ -14,6 +16,8 @@ public class ElectionInformation {
         this.repeatingEvery = builder.getRepeatingEvery();
     }
 
+    @JsonProperty("electionId")
+    public UUID electionId;
     @JsonProperty("electionName")
     public String electionName;
     @JsonProperty("electionDate")
