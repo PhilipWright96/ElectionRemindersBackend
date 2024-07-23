@@ -1,12 +1,13 @@
 package com.election.reminders.builders;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.election.reminders.dtos.jackson.responses.ReminderInformation;
 
 public class ReminderInformationBuilder {
     private String reminderName;
-    private String electionId;
+    private UUID electionId;
     private LocalDateTime reminderDate;
     private LocalDateTime createdOn;
     private String reminderDetails;
@@ -20,12 +21,12 @@ public class ReminderInformationBuilder {
         return this.reminderName;
     }
 
-    public ReminderInformationBuilder electionId(String electionId) {
+    public ReminderInformationBuilder electionId(UUID electionId) {
         this.electionId = electionId;
         return this;
     }
 
-    public String getElectionId() {
+    public UUID getElectionId() {
         return this.electionId;
     }
 

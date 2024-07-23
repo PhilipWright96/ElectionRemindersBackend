@@ -2,6 +2,7 @@ package com.election.reminders.utils;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.election.reminders.builders.ReminderInformationBuilder;
@@ -28,21 +29,21 @@ public class TestDataBuilder {
         public static List<ReminderInformation> constructDummyReminderInformations() {
                 ReminderInformation reminderInformation1 = new ReminderInformationBuilder()
                                 .reminderName("Reminder For A")
-                                .electionId("A")
+                                .electionId(UUID.randomUUID())
                                 .reminderDate(LocalDateTime.of(2024, 1, 1, 1, 0))
                                 .createdOn(LocalDateTime.of(2024, 1, 2, 1, 0))
                                 .reminderDetails("Details for reminder A").build();
 
                 ReminderInformation reminderInformation2 = new ReminderInformationBuilder()
                                 .reminderName("Reminder For B")
-                                .electionId("B")
+                                .electionId(UUID.randomUUID())
                                 .reminderDate(LocalDateTime.of(2024, 2, 1, 1, 0))
                                 .createdOn(LocalDateTime.of(2024, 2, 2, 1, 0))
                                 .reminderDetails("Details for reminder B").build();
 
                 ReminderInformation reminderInformation3 = new ReminderInformationBuilder()
                                 .reminderName("Reminder For C")
-                                .electionId("C")
+                                .electionId(UUID.randomUUID())
                                 .reminderDate(LocalDateTime.of(2024, 3, 1, 1, 0))
                                 .createdOn(LocalDateTime.of(2024, 3, 2, 1, 0))
                                 .reminderDetails("Details for reminder c").build();

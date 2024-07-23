@@ -7,6 +7,7 @@ import com.election.reminders.builders.ReminderInformationBuilder;
 import com.election.reminders.dtos.jackson.responses.ReminderInformation;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +20,7 @@ public class ReminderInformationSerializationTest {
         // Given
         final ReminderInformationBuilder builder = new ReminderInformationBuilder()
                 .reminderName("Reminder abc")
-                .electionId("election abc")
+                .electionId(UUID.randomUUID())
                 .createdOn(LocalDateTime.of(2024, 1, 1, 0, 0))
                 .reminderDate(LocalDateTime.of(2024, 2, 1, 0, 0))
                 .reminderDetails("reminder me blah blah blah");
