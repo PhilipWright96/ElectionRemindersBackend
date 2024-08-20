@@ -1,13 +1,26 @@
 package com.election.reminders.builders;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import com.election.reminders.dtos.jackson.responses.ElectionInformation;
 
 public class ElectionInformationBuilder {
+    private UUID electionId;
     private String electionName;
-    private String electionDate;
+    private LocalDateTime electionDate;
     private String electionSummary;
     private Boolean isRepeating;
     private String repeatingEvery;
+
+    public ElectionInformationBuilder electionId(UUID electionId) {
+        this.electionId = electionId;
+        return this;
+    }
+
+    public UUID getElectionId() {
+        return this.electionId;
+    }
 
     public ElectionInformationBuilder electionName(String electionName) {
         this.electionName = electionName;
@@ -18,12 +31,12 @@ public class ElectionInformationBuilder {
         return this.electionName;
     }
 
-    public ElectionInformationBuilder electionDate(String electionDate) {
+    public ElectionInformationBuilder electionDate(LocalDateTime electionDate) {
         this.electionDate = electionDate;
         return this;
     }
 
-    public String getElectionDate() {
+    public LocalDateTime getElectionDate() {
         return this.electionDate;
     }
 

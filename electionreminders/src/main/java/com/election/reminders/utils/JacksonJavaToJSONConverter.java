@@ -9,8 +9,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class JacksonJavaToJSONConverter implements IJavaToJSONConverter {
+    private final ObjectMapper objectMapper;
+
+    public JacksonJavaToJSONConverter(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
     public <T> String convertJavaToJSON(List<T> objectsToConvertToJSON) {
-        final ObjectMapper objectMapper = new ObjectMapper();
 
         String json = null;
 

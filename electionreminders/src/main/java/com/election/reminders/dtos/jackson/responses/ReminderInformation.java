@@ -1,10 +1,14 @@
 package com.election.reminders.dtos.jackson.responses;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import com.election.reminders.builders.ReminderInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ReminderInformation {
     public ReminderInformation(ReminderInformationBuilder builder) {
+        this.reminderId = builder.getReminderId();
         this.reminderName = builder.getReminderName();
         this.electionId = builder.getElectionId();
         this.createdOn = builder.getCreatedOn();
@@ -12,14 +16,16 @@ public class ReminderInformation {
         this.reminderDetails = builder.getReminderDetails();
     }
 
+    @JsonProperty("reminderId")
+    public UUID reminderId;
     @JsonProperty("reminderName")
     public String reminderName;
     @JsonProperty("electionId")
-    public String electionId;
+    public UUID electionId;
     @JsonProperty("createdOn")
-    public String createdOn;
+    public LocalDateTime createdOn;
     @JsonProperty("reminderDate")
-    public String reminderDate;
+    public LocalDateTime reminderDate;
     @JsonProperty("reminderDetails")
     public String reminderDetails;
 }
