@@ -19,11 +19,12 @@ public class ReminderInformationSerializationTest {
     void reminderInformation_withValuesForAllFields_objectIsCorrectlySerializedToJSON() {
         // Given
         final ReminderInformationBuilder builder = new ReminderInformationBuilder()
+                .reminderId(UUID.fromString("befe4dea-2e1f-403e-ad82-42f737daa0eb"))
                 .reminderName("Reminder abc")
-                .electionId(UUID.randomUUID())
+                .electionId(UUID.fromString("cefe4dea-2e1f-403e-ad82-42f737daa0eb"))
                 .createdOn(LocalDateTime.of(2024, 1, 1, 0, 0))
                 .reminderDate(LocalDateTime.of(2024, 2, 1, 0, 0))
-                .reminderDetails("reminder me blah blah blah");
+                .reminderDetails("Remind me in 4 days");
 
         final ReminderInformation reminderInformation = new ReminderInformation(builder);
 
@@ -41,11 +42,12 @@ public class ReminderInformationSerializationTest {
 
         // Then
         final String expectedJsonString = "{"
+                + "\"reminderId\":\"befe4dea-2e1f-403e-ad82-42f737daa0eb\","
                 + "\"reminderName\":\"Reminder abc\","
-                + "\"electionId\":\"election abc\","
+                + "\"electionId\":\"cefe4dea-2e1f-403e-ad82-42f737daa0eb\","
                 + "\"createdOn\":\"2024-01-01T00:00:00\","
-                + "\"reminderDate\"2024-02-01T00:00:00,"
-                + "\"reminderDetails\":\"4 years\""
+                + "\"reminderDate\":\"2024-02-01T00:00:00\","
+                + "\"reminderDetails\":\"Remind me in 4 days\""
                 + "}";
 
         assertEquals(expectedJsonString, reminderObjectAsJsonString, "Reminder object mapped incorrectly to string");

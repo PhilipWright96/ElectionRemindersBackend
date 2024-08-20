@@ -17,10 +17,9 @@ public class ElectionInformationSerializationTest {
     @Test
     void electionInformation_withValuesForAllFields_objectIsCorrectlySerializedToJSON() {
         // Given
-        final UUID randomElectionId = UUID.fromString("f2be4dea-2e1f-403e-ad82-42f737daa0eb");
         final ElectionInformationBuilder builder = new ElectionInformationBuilder()
                 .electionName("Election abc")
-                .electionId(randomElectionId)
+                .electionId(UUID.fromString("f2be4dea-2e1f-403e-ad82-42f737daa0eb"))
                 .electionDate(LocalDateTime.of(2024, 1, 1, 0, 0))
                 .electionSummary("This is a summary of election abc.")
                 .isRepeating(true)
