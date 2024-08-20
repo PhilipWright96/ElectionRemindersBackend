@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ReminderInformation {
     public ReminderInformation(ReminderInformationBuilder builder) {
+        this.reminderId = builder.getReminderId();
         this.reminderName = builder.getReminderName();
         this.electionId = builder.getElectionId();
         this.createdOn = builder.getCreatedOn();
@@ -15,6 +16,8 @@ public class ReminderInformation {
         this.reminderDetails = builder.getReminderDetails();
     }
 
+    @JsonProperty("reminderId")
+    public UUID reminderId;
     @JsonProperty("reminderName")
     public String reminderName;
     @JsonProperty("electionId")

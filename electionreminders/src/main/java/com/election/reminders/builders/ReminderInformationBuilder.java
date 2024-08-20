@@ -6,11 +6,21 @@ import java.util.UUID;
 import com.election.reminders.dtos.jackson.responses.ReminderInformation;
 
 public class ReminderInformationBuilder {
+    private UUID reminderId;
     private String reminderName;
     private UUID electionId;
     private LocalDateTime reminderDate;
     private LocalDateTime createdOn;
     private String reminderDetails;
+
+    public ReminderInformationBuilder reminderId(UUID reminderId) {
+        this.reminderId = reminderId;
+        return this;
+    }
+
+    public UUID getReminderId() {
+        return this.reminderId;
+    }
 
     public ReminderInformationBuilder reminderName(String reminderName) {
         this.reminderName = reminderName;
