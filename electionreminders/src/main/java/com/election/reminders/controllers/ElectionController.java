@@ -17,7 +17,6 @@ public class ElectionController {
     private final ElectionService electionService;
     private final IJavaToJSONConverter javaToJSONConverter;
 
-    @Autowired
     public ElectionController(ElectionService electionService, IJavaToJSONConverter javaToJSONConverter) {
         this.electionService = electionService;
         this.javaToJSONConverter = javaToJSONConverter;

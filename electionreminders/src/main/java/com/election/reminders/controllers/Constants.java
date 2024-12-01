@@ -1,5 +1,6 @@
 package com.election.reminders.controllers;
 
 public class Constants {
-    public static final String FRONT_END_URL = "http://localhost:8100";
+    // Currently harcoded to phone url
+    public static final String FRONT_END_URL = "https://192.168.178.69:8100";
 }
