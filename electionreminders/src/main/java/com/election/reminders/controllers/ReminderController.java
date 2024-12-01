@@ -17,7 +17,6 @@ public class ReminderController {
     private final ReminderService reminderService;
     private final IJavaToJSONConverter javaToJSONConverter;
 
-    @Autowired
     public ReminderController(ReminderService reminderService, IJavaToJSONConverter javaToJSONConverter) {
         this.reminderService = reminderService;
         this.javaToJSONConverter = javaToJSONConverter;
