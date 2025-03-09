@@ -13,10 +13,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "elections")
+@Table(name = "election_information")
 @Getter
 @Setter
-public class Election {
+public class ElectionInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID electionId;
