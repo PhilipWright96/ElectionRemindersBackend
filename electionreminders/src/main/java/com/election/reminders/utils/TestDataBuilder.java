@@ -6,20 +6,20 @@ import java.util.UUID;
 
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.election.reminders.builders.ReminderInformationBuilder;
-import com.election.reminders.dtos.jackson.responses.ElectionInformation;
+import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
 import com.election.reminders.dtos.jackson.responses.ReminderInformation;
 
 public class TestDataBuilder {
-        public static List<ElectionInformation> constructDummyElectionInformations() {
-                ElectionInformation electionInformation1 = new ElectionInformationBuilder().electionName("A")
+        public static List<ElectionInformationDto> constructDummyElectionInformations() {
+                ElectionInformationDto electionInformation1 = new ElectionInformationBuilder().electionName("A")
                                 .electionDate(LocalDateTime.of(2025, 4, 1, 1, 0))
                                 .electionSummary("Summary for A").isRepeating(false).build();
 
-                ElectionInformation electionInformation2 = new ElectionInformationBuilder().electionName("B")
+                ElectionInformationDto electionInformation2 = new ElectionInformationBuilder().electionName("B")
                                 .electionDate(LocalDateTime.of(2025, 5, 1, 1, 0))
                                 .electionSummary("Summary for B").isRepeating(true).repeatingEvery("3 years").build();
 
-                ElectionInformation electionInformation3 = new ElectionInformationBuilder().electionName("C")
+                ElectionInformationDto electionInformation3 = new ElectionInformationBuilder().electionName("C")
                                 .electionDate(LocalDateTime.of(2026, 6, 1, 1, 0))
                                 .electionSummary("Summary for C").isRepeating(true).repeatingEvery("3 years").build();
 

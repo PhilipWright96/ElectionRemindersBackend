@@ -6,8 +6,8 @@ import java.util.UUID;
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ElectionInformation {
-    public ElectionInformation(ElectionInformationBuilder builder) {
+public class ElectionInformationDto {
+    public ElectionInformationDto(ElectionInformationBuilder builder) {
         this.electionId = builder.getElectionId();
         this.electionName = builder.getElectionName();
         this.electionDate = builder.getElectionDate();
