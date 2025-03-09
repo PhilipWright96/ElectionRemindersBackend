@@ -12,15 +12,15 @@ import com.election.reminders.dtos.jackson.responses.ReminderInformation;
 public class TestDataBuilder {
         public static List<ElectionInformation> constructDummyElectionInformations() {
                 ElectionInformation electionInformation1 = new ElectionInformationBuilder().electionName("A")
-                                .electionDate(LocalDateTime.of(2024, 1, 1, 1, 0))
+                                .electionDate(LocalDateTime.of(2025, 4, 1, 1, 0))
                                 .electionSummary("Summary for A").isRepeating(false).build();
 
                 ElectionInformation electionInformation2 = new ElectionInformationBuilder().electionName("B")
-                                .electionDate(LocalDateTime.of(2024, 2, 1, 1, 0))
+                                .electionDate(LocalDateTime.of(2025, 5, 1, 1, 0))
                                 .electionSummary("Summary for B").isRepeating(true).repeatingEvery("3 years").build();
 
                 ElectionInformation electionInformation3 = new ElectionInformationBuilder().electionName("C")
-                                .electionDate(LocalDateTime.of(2024, 3, 1, 1, 0))
+                                .electionDate(LocalDateTime.of(2026, 6, 1, 1, 0))
                                 .electionSummary("Summary for C").isRepeating(true).repeatingEvery("3 years").build();
 
                 return List.of(electionInformation1, electionInformation2, electionInformation3);
