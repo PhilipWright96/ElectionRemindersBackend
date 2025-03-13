@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.election.reminders.builders.ElectionInformationBuilder;
-import com.election.reminders.dtos.jackson.responses.ElectionInformation;
+import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -25,7 +25,7 @@ public class ElectionInformationSerializationTest {
                 .isRepeating(true)
                 .repeatingEvery("4 years");
 
-        final ElectionInformation electionInformation = new ElectionInformation(builder);
+        final ElectionInformationDto electionInformation = new ElectionInformationDto(builder);
 
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());

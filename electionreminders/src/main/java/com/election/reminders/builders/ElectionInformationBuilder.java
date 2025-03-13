@@ -3,7 +3,7 @@ package com.election.reminders.builders;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.election.reminders.dtos.jackson.responses.ElectionInformation;
+import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
 
 public class ElectionInformationBuilder {
     private UUID electionId;
@@ -67,7 +67,7 @@ public class ElectionInformationBuilder {
         return this.repeatingEvery;
     }
 
-    public ElectionInformation build() {
-        return new ElectionInformation(this);
+    public ElectionInformationDto build() {
+        return new ElectionInformationDto(this);
     }
 }
