@@ -1,15 +1,14 @@
 package com.election.reminders.repositories;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.election.reminders.dtos.jackson.responses.ElectionInformation;
-import com.election.reminders.utils.TestDataBuilder;
+import com.election.reminders.persistence.ElectionInformation;
 
 @Repository
-public class ElectionRepository {
-    public List<ElectionInformation> getElectionsForCountry(String countryName) {
-        return TestDataBuilder.constructDummyElectionInformations();
-    }
+public interface ElectionRepository extends JpaRepository<ElectionInformation, UUID> {
+    List<ElectionInformation> findByCountryName(String countryName);
 }
