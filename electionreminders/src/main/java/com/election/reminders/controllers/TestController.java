@@ -1,12 +1,11 @@
 package com.election.reminders.controllers;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.election.reminders.dtos.jackson.requests.TestRequest;
@@ -46,9 +45,9 @@ public class TestController {
         return "okay";
     }
 
-    @PostMapping("/testCreateElection")
-    public void postTestElectionCreation(@RequestBody ElectionInformation electionInformation) {
-        electionRepository.save(electionInformation);
+    @PostMapping("/testCreateElections")
+    public void postTestElectionCreation(@RequestBody List<ElectionInformation> electionInformation) {
+        electionRepository.saveAll(electionInformation);
     }
 
 }
