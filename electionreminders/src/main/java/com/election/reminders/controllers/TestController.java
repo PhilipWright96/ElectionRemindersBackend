@@ -50,4 +50,9 @@ public class TestController {
         electionRepository.saveAll(electionInformation);
     }
 
+    @GetMapping("/elections")
+    public List<ElectionInformation> getElections() {
+        return electionRepository.findAll();
+    }
+
 }
