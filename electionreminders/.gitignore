@@ -2,3 +2,4 @@
 /src/main/resources/application-secrets.properties
 /src/main/resources/keystore.jks
 /src/main/resources/keystore.p12
+.env
