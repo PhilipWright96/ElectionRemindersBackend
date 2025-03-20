@@ -18,3 +18,13 @@ The programme uses a sql database to return elections. Please start a sql databa
 # application.properties and settings.
 This app has multiple settings. You can view what settings are needed in application.properties. You can add the necessary
 passwords and sensitive data in a application-secrets.properties file. 
+
+# Docker
+This repo has a Dockerfile for building the Spring App as a jar. It also has a docker-compose file for building and running
+the necessary containers (the app and Postgres). Just run "docker-compose up -d --build". When the containers are running,
+you can access them via the rest endpoints we provide. 
+
+# Env and application-secrets.properties
+We currently expect a application-secrets.properties file 
+and a .env file. The former is for spring config and the latter is for our docker-compose file. We want to combine the 
+two in the future to avoid duplicated information. 
