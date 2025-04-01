@@ -2,6 +2,8 @@ package com.election.reminders.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import com.fasterxml.jackson.jr.ob.JSON;
 @RestController
 public class TestController {
     private final ElectionRepository electionRepository;
+    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
     public TestController(ElectionRepository electionRepository) {
         this.electionRepository = electionRepository;
@@ -52,6 +55,7 @@ public class TestController {
 
     @GetMapping("/elections")
     public List<ElectionInformation> getElections() {
+        logger.info("Returning elections");
         return electionRepository.findAll();
     }
 
