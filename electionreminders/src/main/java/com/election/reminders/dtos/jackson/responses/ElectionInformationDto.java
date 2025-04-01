@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@ToString
 public class ElectionInformationDto {
     // No arg constructor to allow for MapStruct to properly generate mapping code
     public ElectionInformationDto() {
