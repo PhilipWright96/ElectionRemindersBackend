@@ -2,6 +2,7 @@ package com.election.reminders.services;
 
 import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
 import com.election.reminders.mappers.ElectionInformationMapper;
+import com.election.reminders.persistence.ElectionInformation;
 import com.election.reminders.repositories.ElectionRepository;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class ElectionService {
     }
 
     public List<ElectionInformationDto> getElectionsForCountry(String countryName) {
+        final List<ElectionInformation> electionInfosForCountry = electionRepository.findByCountryName(countryName);
         return electionInformationMapper
-                .electionInformationToElectionInformationDto(electionRepository.findByCountryName(countryName));
+                .electionInformationToElectionInformationDto(electionInfosForCountry);
     }
 }
