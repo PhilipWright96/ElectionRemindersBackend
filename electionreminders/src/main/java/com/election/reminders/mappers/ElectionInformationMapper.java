@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.election.reminders.controllers.TestController;
 import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
 import com.election.reminders.persistence.ElectionInformation;
 
@@ -17,7 +16,7 @@ import com.election.reminders.persistence.ElectionInformation;
 public class ElectionInformationMapper {
     @Autowired
     private ModelMapper modelMapper;
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ElectionInformationMapper.class);
 
     public ElectionInformationDto electionInformationToElectionInformationDto(ElectionInformation electionInformation) {
         return modelMapper.map(electionInformation, ElectionInformationDto.class);
