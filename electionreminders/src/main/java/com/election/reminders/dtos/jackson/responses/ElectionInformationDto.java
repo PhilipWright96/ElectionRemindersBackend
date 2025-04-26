@@ -6,6 +6,13 @@ import java.util.UUID;
 import com.election.reminders.builders.ElectionInformationBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
 public class ElectionInformationDto {
     // No arg constructor to allow for MapStruct to properly generate mapping code
     public ElectionInformationDto() {
@@ -18,6 +25,7 @@ public class ElectionInformationDto {
         this.electionSummary = builder.getElectionSummary();
         this.isRepeating = builder.getIsRepeating();
         this.repeatingEvery = builder.getRepeatingEvery();
+        this.countryName = builder.getCountryName();
     }
 
     @JsonProperty("electionId")
@@ -32,4 +40,6 @@ public class ElectionInformationDto {
     public Boolean isRepeating;
     @JsonProperty("repeatingEvery")
     public String repeatingEvery;
+    @JsonProperty("countryName")
+    public String countryName;
 }

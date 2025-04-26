@@ -23,6 +23,7 @@ public class ElectionInformationSerializationTest {
                 .electionDate(LocalDateTime.of(2024, 1, 1, 0, 0))
                 .electionSummary("This is a summary of election abc.")
                 .isRepeating(true)
+                .countryName("A country")
                 .repeatingEvery("4 years");
 
         final ElectionInformationDto electionInformation = new ElectionInformationDto(builder);
@@ -46,7 +47,8 @@ public class ElectionInformationSerializationTest {
                 + "\"electionDate\":\"2024-01-01T00:00:00\","
                 + "\"electionSummary\":\"This is a summary of election abc.\","
                 + "\"isRepeating\":true,"
-                + "\"repeatingEvery\":\"4 years\""
+                + "\"repeatingEvery\":\"4 years\","
+                + "\"countryName\":\"A country\""
                 + "}";
 
         assertEquals(expectedJsonString, electionObjectAsJsonString, "Election object mapped incorrectly to string");

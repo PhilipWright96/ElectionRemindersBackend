@@ -12,6 +12,7 @@ public class ElectionInformationBuilder {
     private String electionSummary;
     private Boolean isRepeating;
     private String repeatingEvery;
+    private String countryName;
 
     public ElectionInformationBuilder electionId(UUID electionId) {
         this.electionId = electionId;
@@ -65,6 +66,15 @@ public class ElectionInformationBuilder {
 
     public String getRepeatingEvery() {
         return this.repeatingEvery;
+    }
+
+    public ElectionInformationBuilder countryName(String countryName) {
+        this.countryName = countryName;
+        return this;
+    }
+
+    public String getCountryName() {
+        return this.countryName;
     }
 
     public ElectionInformationDto build() {

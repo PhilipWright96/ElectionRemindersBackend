@@ -1,0 +1,35 @@
+services:
+  app:
+    # Using this remotely and have already sent the images? Then replace the normal build step with image: electionreminders_app:latest. 
+    # This means "Dont use the local Dockerfile to build images - just use this image".
+    build: .
+    #image: electionreminders-app:latest
+    container_name: election-reminders-v1
+    ports:
+      - "443:443"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    networks:
+      - election-reminder-network
+
+  postgres:
+    image: postgres:17.4
+    container_name: election-reminder-postgres-db
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - election-reminder-network
+
+networks:
+  election-reminder-network:
+
+
+volumes:
+  pgdata:
