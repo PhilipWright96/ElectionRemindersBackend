@@ -26,7 +26,6 @@ public class ElectionInformation {
     @Column(nullable = false)
     private String electionName;
 
-    @Column(nullable = false)
     private String electionDetails;
 
     @Column(nullable = false)
