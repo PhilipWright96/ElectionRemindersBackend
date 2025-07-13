@@ -38,6 +38,9 @@ switch it on and to turn on the docker containers inside it. Then you can call e
 
 This process is pretty manual and annoying. We are working on automating this process better. Ideally, things should be tested locally anyway. 
 
+Need to debug a problem in the container running our app? Use docker ps to find the container id, and then run
+docker logs <container_id> | less
+
 
 # Env and application-secrets.properties
 We currently expect a application-secrets.properties file 
