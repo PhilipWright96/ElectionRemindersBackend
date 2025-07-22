@@ -1,6 +1,6 @@
 services:
   app:
-    # Using this remotely and have already sent the images? Then replace the normal build step with image: electionreminders_app:latest. 
+    # Using this remotely and have already sent the images (as a .tar file)? Then replace the normal build step with image: electionreminders_app:latest. 
     # This means "Dont use the local Dockerfile to build images - just use this image".
     build: .
     #image: electionreminders-app:latest
@@ -11,6 +11,9 @@ services:
       - postgres
     env_file:
       - .env
+    volumes:
+      - /etc/letsencrypt/live/electionreminders.space:/certs:ro
+      - /etc/letsencrypt/archive/electionreminders.space:/certs/archive:ro
     networks:
       - election-reminder-network
 
