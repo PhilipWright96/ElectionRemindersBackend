@@ -30,14 +30,18 @@ switch it on and to turn on the docker containers inside it. Then you can call e
     How To Do This
     1. Clear out the images from the remote server (delete tar files and run docker-compose down, and run "docker system prune -a --volumes").
     2. Regenerate jar file with "mvn clean package". 
-    3. Rebuild and run docker images with docker compose up -d --build
+    3. Rebuild and run docker images with docker compose up -d --build (make sure docker desktop is running)
     4. Then run "docker save"  to generate images as tar files from the local running containers. 
     5. Then ssh those images into the remote server with the scp command.  
-    6. Use "docker load" to convert those tar files into proper images which can be locally accessed. 
+    6. On the server use "docker load" to convert those tar files into proper images which can be locally accessed. 
     7. Then on the remote server, you can run docker compose up. 
 
 This process is pretty manual and annoying. We are working on automating this process better. Ideally, things should be tested locally anyway. 
 
+Need to debug a problem in the container running our app? Use docker ps to find the container id, and then run
+docker logs <container_id> | less
+
+Be aware - our remote server also has set up a "Lets Encrypt" certificate with certbot. This certificate will run out every 90 days (you can check this on the sslshopper website) so you have to manually update it by running a openssl command to regenerate the domain.12 file. We want to automate this process at some point. 
 
 # Env and application-secrets.properties
 We currently expect a application-secrets.properties file 

@@ -8,6 +8,7 @@ import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
 public class ElectionInformationBuilder {
     private UUID electionId;
     private String electionName;
+    private String electionDetails;
     private LocalDateTime electionDate;
     private String electionSummary;
     private Boolean isRepeating;
@@ -75,6 +76,15 @@ public class ElectionInformationBuilder {
 
     public String getCountryName() {
         return this.countryName;
+    }
+
+    public ElectionInformationBuilder electionDetails(String electionDetails) {
+        this.electionDetails = electionDetails;
+        return this;
+    }
+
+    public String getElectionDetails() {
+        return this.electionDetails;
     }
 
     public ElectionInformationDto build() {

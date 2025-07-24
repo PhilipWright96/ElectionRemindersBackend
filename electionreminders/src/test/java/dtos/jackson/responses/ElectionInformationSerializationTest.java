@@ -21,6 +21,7 @@ public class ElectionInformationSerializationTest {
                 .electionName("Election abc")
                 .electionId(UUID.fromString("f2be4dea-2e1f-403e-ad82-42f737daa0eb"))
                 .electionDate(LocalDateTime.of(2024, 1, 1, 0, 0))
+                .electionDetails("Here is a example of election details!")
                 .electionSummary("This is a summary of election abc.")
                 .isRepeating(true)
                 .countryName("A country")
@@ -44,6 +45,7 @@ public class ElectionInformationSerializationTest {
         final String expectedJsonString = "{"
                 + "\"electionId\":\"f2be4dea-2e1f-403e-ad82-42f737daa0eb\","
                 + "\"electionName\":\"Election abc\","
+                + "\"electionDetails\":\"Here is a example of election details!\","
                 + "\"electionDate\":\"2024-01-01T00:00:00\","
                 + "\"electionSummary\":\"This is a summary of election abc.\","
                 + "\"isRepeating\":true,"
