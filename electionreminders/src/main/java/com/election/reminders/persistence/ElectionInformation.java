@@ -32,7 +32,10 @@ public class ElectionInformation {
     private String countryName;
 
     @Column(nullable = false)
-    private LocalDateTime electionDate;
+    private LocalDateTime electionPollsOpenDateTime;
+
+    @Column(nullable = false)
+    private LocalDateTime electionPollsCloseDateTime;
 
     private String electionSummary;
 

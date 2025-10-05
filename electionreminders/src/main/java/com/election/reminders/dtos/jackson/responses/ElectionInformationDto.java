@@ -22,7 +22,8 @@ public class ElectionInformationDto {
         this.electionId = builder.getElectionId();
         this.electionName = builder.getElectionName();
         this.electionDetails = builder.getElectionDetails();
-        this.electionDate = builder.getElectionDate();
+        this.electionPollsOpenDateTime = builder.getElectionPollsOpenDateTime();
+        this.electionPollsCloseDateTime = builder.getElectionPollsCloseDateTime();
         this.electionSummary = builder.getElectionSummary();
         this.isRepeating = builder.getIsRepeating();
         this.repeatingEvery = builder.getRepeatingEvery();
@@ -35,8 +36,10 @@ public class ElectionInformationDto {
     public String electionName;
     @JsonProperty("electionDetails")
     public String electionDetails;
-    @JsonProperty("electionDate")
-    public LocalDateTime electionDate;
+    @JsonProperty("electionPollsOpenDateTime")
+    public LocalDateTime electionPollsOpenDateTime;
+    @JsonProperty("electionPollsCloseDateTime")
+    public LocalDateTime electionPollsCloseDateTime;
     @JsonProperty("electionSummary")
     public String electionSummary;
     @JsonProperty("isRepeating")
