@@ -9,7 +9,8 @@ public class ElectionInformationBuilder {
     private UUID electionId;
     private String electionName;
     private String electionDetails;
-    private LocalDateTime electionDate;
+    private LocalDateTime electionPollsOpenDateTime;
+    private LocalDateTime electionPollsCloseDateTime;
     private String electionSummary;
     private Boolean isRepeating;
     private String repeatingEvery;
@@ -33,13 +34,22 @@ public class ElectionInformationBuilder {
         return this.electionName;
     }
 
-    public ElectionInformationBuilder electionDate(LocalDateTime electionDate) {
-        this.electionDate = electionDate;
+    public ElectionInformationBuilder electionPollsOpenDateTime(LocalDateTime electionPollsOpenDateTime) {
+        this.electionPollsOpenDateTime = electionPollsOpenDateTime;
         return this;
     }
 
-    public LocalDateTime getElectionDate() {
-        return this.electionDate;
+    public LocalDateTime getElectionPollsOpenDateTime() {
+        return this.electionPollsOpenDateTime;
+    }
+
+    public ElectionInformationBuilder electionPollsCloseDateTime(LocalDateTime electionPollsCloseDateTime) {
+        this.electionPollsCloseDateTime = electionPollsCloseDateTime;
+        return this;
+    }
+
+    public LocalDateTime getElectionPollsCloseDateTime() {
+        return this.electionPollsCloseDateTime;
     }
 
     public ElectionInformationBuilder electionSummary(String electionSummary) {

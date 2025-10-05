@@ -27,16 +27,13 @@ you can access them via the rest endpoints we provide. You can also view our log
 # Hetzner
 We have a server in the Cloud (Hetzner) where we can run our application. If you want to test with it, be sure to 
 switch it on and to turn on the docker containers inside it. Then you can call endpoints against it to check its working. If you want to make changes, you can generate tar files from the images and then ssh them into the remote server. 
-    How To Do This
-    1. Clear out the images from the remote server (delete tar files and run docker-compose down, and run "docker system prune -a --volumes").
-    2. Regenerate jar file with "mvn clean package". 
-    3. Rebuild and run docker images with docker compose up -d --build (make sure docker desktop is running)
-    4. Then run "docker save"  to generate images as tar files from the local running containers. 
-    5. Then ssh those images into the remote server with the scp command.  
-    6. On the server use "docker load" to convert those tar files into proper images which can be locally accessed. 
-    7. Then on the remote server, you can run docker compose up. 
+# How To Do This
 
-This process is pretty manual and annoying. We are working on automating this process better. Ideally, things should be tested locally anyway. 
+    We have extracted out the process into 3 scripts.
+    1. "remove-old-image.sh" which you run from the remote server. You can run this with "sh remove-old-image.sh". This deletes the old files and docker images on the server. 
+    2. "create-new-image.ps1". You can run this with 
+    ".\shell-scripts\create-new-image.ps1 -Target "root@1.2.3.4:/root/" locally. Add in the correct url. This creates a image, and contains it in a local "election_reminders.tar" file, which is then sent to the remote server on the url you entered
+    3. "start-new-image.sh" which you run from the remote server as "sh . This will load the tar file as a docker image and then run it. 
 
 Need to debug a problem in the container running our app? Use docker ps to find the container id, and then run
 docker logs <container_id> | less

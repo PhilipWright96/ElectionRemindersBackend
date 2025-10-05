@@ -20,7 +20,8 @@ public class ElectionInformationSerializationTest {
         final ElectionInformationBuilder builder = new ElectionInformationBuilder()
                 .electionName("Election abc")
                 .electionId(UUID.fromString("f2be4dea-2e1f-403e-ad82-42f737daa0eb"))
-                .electionDate(LocalDateTime.of(2024, 1, 1, 0, 0))
+                .electionPollsOpenDateTime(LocalDateTime.of(2024, 1, 1, 0, 0))
+                .electionPollsCloseDateTime(LocalDateTime.of(2024, 2, 1, 0, 0))
                 .electionDetails("Here is a example of election details!")
                 .electionSummary("This is a summary of election abc.")
                 .isRepeating(true)
@@ -46,7 +47,8 @@ public class ElectionInformationSerializationTest {
                 + "\"electionId\":\"f2be4dea-2e1f-403e-ad82-42f737daa0eb\","
                 + "\"electionName\":\"Election abc\","
                 + "\"electionDetails\":\"Here is a example of election details!\","
-                + "\"electionDate\":\"2024-01-01T00:00:00\","
+                + "\"electionPollsOpenDateTime\":\"2024-01-01T00:00:00\","
+                + "\"electionPollsCloseDateTime\":\"2024-02-01T00:00:00\","
                 + "\"electionSummary\":\"This is a summary of election abc.\","
                 + "\"isRepeating\":true,"
                 + "\"repeatingEvery\":\"4 years\","
