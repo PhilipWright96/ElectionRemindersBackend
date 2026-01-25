@@ -38,7 +38,7 @@ switch it on and to turn on the docker containers inside it. Then you can call e
 Need to debug a problem in the container running our app? Use docker ps to find the container id, and then run
 docker logs <container_id> | less
 
-Be aware - our remote server also has set up a "Lets Encrypt" certificate with certbot. This certificate will run out every 90 days (you can check this on the sslshopper website) so you have to manually update it by running a openssl command to regenerate the domain.12 file. We want to automate this process at some point. 
+Be aware - our remote server also has set up a "Lets Encrypt" certificate with certbot. This certificate will run out every 90 days (you can check this on the sslshopper website with the url https://electionreminders.space) so you have to manually update it by running a openssl command to regenerate the domain.12 file (sudo certbow renew and pkcs12 -export ...). We want to automate this process at some point. 
 
 # Env and application-secrets.properties
 We currently expect a application-secrets.properties file 
