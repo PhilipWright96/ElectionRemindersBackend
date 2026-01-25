@@ -29,6 +29,8 @@ We have a server in the Cloud (Hetzner) where we can run our application. If you
 switch it on and to turn on the docker containers inside it. Then you can call endpoints against it to check its working. If you want to make changes, you can generate tar files from the images and then ssh them into the remote server. 
 # How To Do This
 
+Firstly make sure docker desktop is running. Then... 
+
     We have extracted out the process into 3 scripts.
     1. "remove-old-image.sh" which you run from the remote server. You can run this with "sh remove-old-image.sh". This deletes the old files and docker images on the server. 
     2. "create-new-image.ps1". You can run this with 
