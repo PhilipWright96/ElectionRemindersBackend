@@ -71,6 +71,7 @@ public class ElectionController {
         electionInformationToUpdate
                 .setElectionPollsCloseDateTime(electionInformationWithUpdatedInfo.getElectionPollsCloseDateTime());
         electionInformationToUpdate.setElectionSummary(electionInformationWithUpdatedInfo.getElectionSummary());
+        electionRepository.save(electionInformationToUpdate);
     }
 
     @DeleteMapping("/elections")
