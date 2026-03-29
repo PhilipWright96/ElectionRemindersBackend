@@ -1,6 +1,6 @@
 /target
 /src/main/resources/application-secrets.properties
-/src/main/resources/static/dist
+/src/main/resources/static
 /src/main/resources/domain.p12
 .env
 election_reminders.tar
