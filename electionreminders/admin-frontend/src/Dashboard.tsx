@@ -1,30 +1,31 @@
 import { Button, Table } from 'antd';
 import { useEffect, useState } from 'react';
-
-type ElectionSuggestion = {
-    id: number;
-    electionName: string;
-    electionType: string;
-    electionArea: string;
-    electionPollsOpenDateTime: string;
-    electionPollsCloseDateTime: string;
-    electionDetails: string;
-};
+import type { ElectionSuggestion, ElectionSuggestionFromBackend } from './types';
 
 function Dashboard() {
     const [data, setData] = useState<ElectionSuggestion[]>([]);
 
     useEffect(() => {
-        // temporary test data
-        setData([
-            { id: 1, electionName: 'Election Suggestion 1', electionType: 'country', electionArea: 'Germany', electionPollsOpenDateTime: '2026-03-29T14:23:45.123', electionPollsCloseDateTime: '2026-03-29T14:23:45.123', electionDetails: 'Here are some election details' },
-            { id: 2, electionName: 'Election Suggestion 2', electionType: 'country', electionArea: 'Germany', electionPollsOpenDateTime: '2026-03-29T14:23:45.123', electionPollsCloseDateTime: '2026-03-29T14:23:45.123', electionDetails: 'Here are some election details' }
-        ]);
+        async function loadData() {
+            const response = await fetch('/electionSuggestions'),
+                returnedBackendData = await response.json();
 
-        // later:
-        // fetch('http://localhost:8080/api/data')
-        //   .then(res => res.json())
-        //   .then(setData);
+            console.log("data is", returnedBackendData);
+            const mappedFrontEndData = returnedBackendData.map((backendData: ElectionSuggestionFromBackend) => {
+                return {
+                    id: backendData.electionSuggestionId,
+                    electionName: backendData.electionName,
+                    electionType: backendData.electionType,
+                    electionArea: backendData.electionArea,
+                    electionPollsOpenDateTime: backendData.electionPollsOpenDateTime,
+                    electionPollsCloseDateTime: backendData.electionPollsCloseDateTime,
+                    electionDetails: backendData.electionDetails
+                }
+            })
+            setData(mappedFrontEndData);
+        }
+
+        loadData();
     }, []);
 
     // 👇 Define columns
