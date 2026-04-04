@@ -23,10 +23,28 @@ function Dashboard() {
                 }
             })
             setData(mappedFrontEndData);
-        }
+        };
 
         loadData();
     }, []);
+
+    async function deleteElectionSuggestions(ids: string[]) {
+        const response = await fetch('/electionSuggestionsByIds', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(ids),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete');
+        }
+
+        setData(prev =>
+            prev.filter(item => !ids.includes(String(item.id)))
+        );
+    }
 
     // 👇 Define columns
     const columns = [
@@ -77,7 +95,7 @@ function Dashboard() {
         {
             key: 'action',
             render: (_: any, record: any) => (
-                <Button onClick={() => handleRejectClick(record)}>
+                <Button onClick={() => deleteElectionSuggestions([record.id])}>
                     Reject Suggestion
                 </Button>
             )
@@ -105,14 +123,10 @@ function Dashboard() {
     );
 }
 
+async function handleApproveClick(record: any): Promise<void> {
+    console.log(record);
+}
+
+
 export default Dashboard;
 
-function handleApproveClick(record: any): void {
-    console.log(record);
-    throw new Error('Function not implemented.');
-}
-
-function handleRejectClick(record: any): void {
-    console.log(record);
-    throw new Error('Function not implemented.');
-}
