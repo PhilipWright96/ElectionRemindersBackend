@@ -5,4 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/dashboard/',
+  server: {
+    proxy: {
+      '/electionSuggestions': {
+        target: 'http://localhost:443',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
 })
