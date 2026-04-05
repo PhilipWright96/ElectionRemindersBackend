@@ -46,7 +46,34 @@ function Dashboard() {
         );
     }
 
-    // 👇 Define columns
+    async function approveElectionSuggestions(electionSuggestion: any) {
+        const electionData = {
+            electionName: electionSuggestion.electionName,
+            countryName: electionSuggestion.electionArea,
+            electionPollsOpenDateTime: electionSuggestion.electionPollsOpenDateTime,
+            electionPollsCloseDateTime: electionSuggestion.electionPollsCloseDateTime,
+            electionDetails: electionSuggestion.electionDetails
+        },
+            electionSuggestionIds = [electionSuggestion.id];
+
+
+        const response = await fetch('/elections', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([electionData]),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create');
+        }
+
+        setData(prev =>
+            prev.filter(item => !electionSuggestionIds.includes(String(item.id)))
+        );
+    }
+
     const columns = [
         {
             title: 'ID',
@@ -87,7 +114,7 @@ function Dashboard() {
         {
             key: 'action',
             render: (_: any, record: any) => (
-                <Button onClick={() => handleApproveClick(record)}>
+                <Button onClick={() => approveElectionSuggestions(record)}>
                     Approve Suggestion
                 </Button>
             )
@@ -122,11 +149,6 @@ function Dashboard() {
         </div>
     );
 }
-
-async function handleApproveClick(record: any): Promise<void> {
-    console.log(record);
-}
-
 
 export default Dashboard;
 
