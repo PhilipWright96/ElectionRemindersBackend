@@ -11,7 +11,12 @@ export default defineConfig({
         target: 'http://localhost:443',
         changeOrigin: true,
         secure: false
-      }
+      },
+      '/elections': {
+        target: 'http://localhost:443',
+        changeOrigin: true,
+        secure: false
+      },
     }
   }
 })
