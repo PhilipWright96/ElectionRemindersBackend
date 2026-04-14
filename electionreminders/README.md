@@ -46,3 +46,8 @@ Be aware - our remote server also has set up a "Lets Encrypt" certificate with c
 We currently expect a application-secrets.properties file 
 and a .env file. The former is for spring config and the latter is for our docker-compose file. We want to combine the 
 two in the future to avoid duplicated information. 
+
+# Frontend
+We have a simple react frontend. To access it, run the script "add-frontend-resources.sh" to build it. Then when our 
+app is running, access the url https://electionreminders.space/dashboard/index.html. To update the app, simply run the 
+"add-frontend-resources.sh" script again. For local testing of the frontend, simply run npm run dev. 
