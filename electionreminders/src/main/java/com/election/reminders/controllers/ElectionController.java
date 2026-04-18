@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,14 +51,23 @@ public class ElectionController {
         return electionRepository.findAll();
     }
 
-    @PostMapping("/elections")
+    @PostMapping("/admin/elections")
     public void createElections(@RequestBody List<ElectionInformation> electionInformation) {
         logger.info("Saving elections");
         electionInformation.forEach((election) -> logger.info(election.toString()));
         electionRepository.saveAll(electionInformation);
     }
 
-    @PutMapping("/elections/{id}")
+    // Anyone calling this endpoint should do so from our dashboard.
+    @PostMapping("/electionsFromDashboard")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void createElectionsFromDashboard(@RequestBody List<ElectionInformation> electionInformation) {
+        logger.info("Saving elections");
+        electionInformation.forEach((election) -> logger.info(election.toString()));
+        electionRepository.saveAll(electionInformation);
+    }
+
+    @PutMapping("/admin/elections/{id}")
     public void updateElection(@PathVariable UUID id,
             @RequestBody ElectionInformation electionInformationWithUpdatedInfo) {
         logger.info("Updating election with updated info....");
@@ -74,14 +84,14 @@ public class ElectionController {
         electionRepository.save(electionInformationToUpdate);
     }
 
-    @DeleteMapping("/elections")
+    @DeleteMapping("/admin/elections")
     public void deleteElections(@RequestBody List<ElectionInformation> electionInformation) {
         logger.info("Deleting elections");
         electionInformation.forEach((election) -> logger.info(election.toString()));
         electionRepository.deleteAll(electionInformation);
     }
 
-    @DeleteMapping("/electionsByIds")
+    @DeleteMapping("/admin/electionsByIds")
     public void deleteElectionsByIds(@RequestBody List<UUID> electionIds) {
         logger.info("Deleting elections");
         logger.info(electionIds.toString());
