@@ -29,7 +29,7 @@ function Dashboard() {
     }, []);
 
     async function deleteElectionSuggestions(ids: string[]) {
-        const response = await fetch('/electionSuggestionsByIds', {
+        const response = await fetch('/electionSuggestionsByIdsFromDashboard', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ function Dashboard() {
             electionSuggestionIds = [electionSuggestion.id];
 
 
-        const response = await fetch('/elections', {
+        const response = await fetch('/electionsFromDashboard', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
