@@ -69,6 +69,8 @@ function Dashboard() {
             throw new Error('Failed to create');
         }
 
+        deleteElectionSuggestions(electionSuggestionIds);
+
         setData(prev =>
             prev.filter(item => !electionSuggestionIds.includes(String(item.id)))
         );
