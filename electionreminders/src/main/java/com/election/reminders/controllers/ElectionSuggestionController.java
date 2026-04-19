@@ -43,6 +43,13 @@ public class ElectionSuggestionController {
         return electionSuggestionRepository.findAll();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/electionSuggestionsFromDashboard")
+    public List<ElectionSuggestion> getElectionSuggestionsForDashboard() {
+        logger.info("Returning elections");
+        return electionSuggestionRepository.findAll();
+    }
+
     @DeleteMapping("/admin/electionSuggestions")
     public void deleteElections(@RequestBody List<ElectionSuggestion> electionSuggestions) {
         logger.info("Deleting election suggestions");
