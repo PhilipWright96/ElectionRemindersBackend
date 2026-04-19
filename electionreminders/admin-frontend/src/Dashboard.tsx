@@ -7,7 +7,7 @@ function Dashboard() {
 
     useEffect(() => {
         async function loadData() {
-            const response = await fetch('/electionSuggestions'),
+            const response = await fetch('/electionSuggestionsFromDashboard'),
                 returnedBackendData = await response.json();
 
             console.log("data is", returnedBackendData);
@@ -38,6 +38,8 @@ function Dashboard() {
         });
 
         if (!response.ok) {
+            const returnedData = await response.json();
+            console.log(returnedData);
             throw new Error('Failed to delete');
         }
 
@@ -66,6 +68,9 @@ function Dashboard() {
         });
 
         if (!response.ok) {
+            const returnedData = await response.json();
+            console.log("error is ");
+            console.log(returnedData);
             throw new Error('Failed to create');
         }
 
