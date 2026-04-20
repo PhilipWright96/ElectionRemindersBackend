@@ -7,7 +7,7 @@ function Dashboard() {
 
     useEffect(() => {
         async function loadData() {
-            const response = await fetch('/electionSuggestions'),
+            const response = await fetch('/electionSuggestionsFromDashboard'),
                 returnedBackendData = await response.json();
 
             console.log("data is", returnedBackendData);
@@ -29,7 +29,7 @@ function Dashboard() {
     }, []);
 
     async function deleteElectionSuggestions(ids: string[]) {
-        const response = await fetch('/electionSuggestionsByIds', {
+        const response = await fetch('/electionSuggestionsByIdsFromDashboard', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,6 +38,8 @@ function Dashboard() {
         });
 
         if (!response.ok) {
+            const returnedData = await response.json();
+            console.log(returnedData);
             throw new Error('Failed to delete');
         }
 
@@ -57,7 +59,7 @@ function Dashboard() {
             electionSuggestionIds = [electionSuggestion.id];
 
 
-        const response = await fetch('/elections', {
+        const response = await fetch('/electionsFromDashboard', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -66,8 +68,13 @@ function Dashboard() {
         });
 
         if (!response.ok) {
+            const returnedData = await response.json();
+            console.log("error is ");
+            console.log(returnedData);
             throw new Error('Failed to create');
         }
+
+        deleteElectionSuggestions(electionSuggestionIds);
 
         setData(prev =>
             prev.filter(item => !electionSuggestionIds.includes(String(item.id)))

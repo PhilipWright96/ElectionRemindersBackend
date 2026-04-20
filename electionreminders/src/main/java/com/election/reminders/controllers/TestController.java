@@ -7,19 +7,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.election.reminders.dtos.jackson.requests.TestRequest;
-import com.election.reminders.repositories.ElectionRepository;
 import com.fasterxml.jackson.jr.ob.JSON;
 
 @RestController
 public class TestController {
-    private final ElectionRepository electionRepository;
-
-    public TestController(ElectionRepository electionRepository) {
-        this.electionRepository = electionRepository;
-    }
 
     @CrossOrigin(origins = Constants.FRONT_END_URL)
-    @GetMapping("/test")
+    @GetMapping("/admin/test")
     public String getTestJSON() {
         String json = null;
         try {
@@ -36,7 +30,7 @@ public class TestController {
     }
 
     @CrossOrigin(origins = Constants.FRONT_END_URL)
-    @PostMapping("/testPOST")
+    @PostMapping("/admin/testPOST")
     public String postTestJSON(@RequestBody TestRequest requestBody) {
         System.out.println(requestBody);
         return "okay";

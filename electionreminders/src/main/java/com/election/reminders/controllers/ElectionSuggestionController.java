@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,23 +37,40 @@ public class ElectionSuggestionController {
         electionSuggestionRepository.saveAll(electionSuggestions);
     }
 
-    @GetMapping("/electionSuggestions")
+    @GetMapping("/admin/electionSuggestions")
     public List<ElectionSuggestion> getElectionSuggestions() {
         logger.info("Returning elections");
         return electionSuggestionRepository.findAll();
     }
 
-    @DeleteMapping("/electionSuggestions")
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/electionSuggestionsFromDashboard")
+    public List<ElectionSuggestion> getElectionSuggestionsForDashboard() {
+        logger.info("Returning elections");
+        return electionSuggestionRepository.findAll();
+    }
+
+    @DeleteMapping("/admin/electionSuggestions")
     public void deleteElections(@RequestBody List<ElectionSuggestion> electionSuggestions) {
         logger.info("Deleting election suggestions");
         electionSuggestions.forEach((electionSuggestion) -> logger.info(electionSuggestion.toString()));
         electionSuggestionRepository.deleteAll(electionSuggestions);
     }
 
-    @DeleteMapping("/electionSuggestionsByIds")
+    @DeleteMapping("/admin/electionSuggestionsByIds")
     public void deleteElectionSuggestionsByIds(@RequestBody List<UUID> electionSuggestionIds) {
         logger.info("Deleting elections");
         logger.info(electionSuggestionIds.toString());
         electionSuggestionRepository.deleteAllById(electionSuggestionIds);
     }
+
+    // Anyone calling this endpoint should do so from our dashboard.
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/electionSuggestionsByIdsFromDashboard")
+    public void deleteElectionSuggestionsByIdsFromDashboard(@RequestBody List<UUID> electionSuggestionIds) {
+        logger.info("Deleting elections");
+        logger.info(electionSuggestionIds.toString());
+        electionSuggestionRepository.deleteAllById(electionSuggestionIds);
+    }
+
 }
