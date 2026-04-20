@@ -39,8 +39,6 @@ public class ElectionInformation {
 
     private String electionSummary;
 
-    private Boolean isRepeating;
-
-    private String repeatingEvery;
-
+    @Column(nullable = false)
+    private ElectionType electionType;
 }

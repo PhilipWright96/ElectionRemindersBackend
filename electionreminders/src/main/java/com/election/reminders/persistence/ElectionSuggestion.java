@@ -27,9 +27,6 @@ public class ElectionSuggestion {
     private String electionName;
 
     @Column(nullable = false)
-    private String electionType;
-
-    @Column(nullable = false)
     private String electionArea;
 
     @Column(nullable = false)
@@ -39,4 +36,7 @@ public class ElectionSuggestion {
     private LocalDateTime electionPollsCloseDateTime;
 
     private String electionDetails;
+
+    @Column(nullable = false)
+    private ElectionType electionType;
 }
