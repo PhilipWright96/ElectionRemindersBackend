@@ -31,8 +31,17 @@ public class ElectionSuggestion {
     @Column
     private String electionDetails;
 
-    @Column(nullable = false)
+    @Column
     private String countryName;
+
+    @Column
+    private String regionName;
+
+    @Column
+    private String cityName;
+
+    @Column
+    private String organizationName;
 
     @Column(nullable = false)
     private LocalDateTime electionPollsOpenDateTime;
