@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,6 +28,7 @@ public class ElectionInformation {
     @Column(nullable = false)
     private String electionName;
 
+    @Column
     private String electionDetails;
 
     @Column(nullable = false)
@@ -37,8 +40,10 @@ public class ElectionInformation {
     @Column(nullable = false)
     private LocalDateTime electionPollsCloseDateTime;
 
+    @Column
     private String electionSummary;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ElectionType electionType;
 }

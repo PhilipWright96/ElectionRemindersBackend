@@ -28,8 +28,11 @@ public class ElectionSuggestion {
     @Column(nullable = false)
     private String electionName;
 
+    @Column
+    private String electionDetails;
+
     @Column(nullable = false)
-    private String electionArea;
+    private String countryName;
 
     @Column(nullable = false)
     private LocalDateTime electionPollsOpenDateTime;
@@ -37,7 +40,8 @@ public class ElectionSuggestion {
     @Column(nullable = false)
     private LocalDateTime electionPollsCloseDateTime;
 
-    private String electionDetails;
+    @Column
+    private String electionSummary;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
