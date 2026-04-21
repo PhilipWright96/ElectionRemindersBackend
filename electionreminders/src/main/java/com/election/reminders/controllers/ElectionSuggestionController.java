@@ -68,9 +68,15 @@ public class ElectionSuggestionController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/electionSuggestionsByIdsFromDashboard")
     public void deleteElectionSuggestionsByIdsFromDashboard(@RequestBody List<UUID> electionSuggestionIds) {
-        logger.info("Deleting elections");
+        logger.info("Deleting election suggestions");
         logger.info(electionSuggestionIds.toString());
         electionSuggestionRepository.deleteAllById(electionSuggestionIds);
+    }
+
+    @DeleteMapping("/admin/deleteAllElectionSuggestions")
+    public void deleteAllElectionSuggestions() {
+        logger.info("Deleting all election suggestions");
+        electionSuggestionRepository.deleteAll();
     }
 
 }

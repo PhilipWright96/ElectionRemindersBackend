@@ -97,4 +97,10 @@ public class ElectionController {
         logger.info(electionIds.toString());
         electionRepository.deleteAllById(electionIds);
     }
+
+    @DeleteMapping("/admin/deleteAllElections")
+    public void deleteAllElections() {
+        logger.info("Deleting all elections");
+        electionRepository.deleteAll();
+    }
 }
