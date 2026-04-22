@@ -16,10 +16,14 @@ function Dashboard() {
                     id: backendData.electionSuggestionId,
                     electionName: backendData.electionName,
                     electionType: backendData.electionType,
-                    electionArea: backendData.electionArea,
+                    countryName: backendData.countryName,
+                    regionName: backendData.regionName,
+                    cityName: backendData.cityName,
+                    organizationName: backendData.organizationName,
                     electionPollsOpenDateTime: backendData.electionPollsOpenDateTime,
                     electionPollsCloseDateTime: backendData.electionPollsCloseDateTime,
-                    electionDetails: backendData.electionDetails
+                    electionDetails: backendData.electionDetails,
+                    electionSummary: backendData.electionSummary
                 }
             })
             setData(mappedFrontEndData);
@@ -51,10 +55,14 @@ function Dashboard() {
     async function approveElectionSuggestions(electionSuggestion: any) {
         const electionData = {
             electionName: electionSuggestion.electionName,
-            countryName: electionSuggestion.electionArea,
+            countryName: electionSuggestion.countryName,
+            regionName: electionSuggestion.regionName,
+            cityName: electionSuggestion.cityName,
+            organizationName: electionSuggestion.organizationName,
             electionPollsOpenDateTime: electionSuggestion.electionPollsOpenDateTime,
             electionPollsCloseDateTime: electionSuggestion.electionPollsCloseDateTime,
-            electionDetails: electionSuggestion.electionDetails
+            electionDetails: electionSuggestion.electionDetails,
+            electionSummary: electionSuggestion.electionSummary
         },
             electionSuggestionIds = [electionSuggestion.id];
 
@@ -99,9 +107,9 @@ function Dashboard() {
             key: 'electionType'
         },
         {
-            title: 'Election Area',
-            dataIndex: 'electionArea',
-            key: 'electionArea'
+            title: 'Country Name',
+            dataIndex: 'countryName',
+            key: 'countryName'
         },
         {
             title: 'Election Polls Open Date Time',
