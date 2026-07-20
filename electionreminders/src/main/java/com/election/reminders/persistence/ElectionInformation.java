@@ -32,16 +32,16 @@ public class ElectionInformation {
     private String electionDetails;
 
     @Column
-    private String countryName;
+    private ElectionEntity countryEntity;
 
     @Column
-    private String regionName;
+    private ElectionEntity regionEntity;
 
     @Column
-    private String cityName;
+    private ElectionEntity cityEntity;
 
     @Column
-    private String organizationName;
+    private ElectionEntity organizationEntity;
 
     @Column(nullable = false)
     private LocalDateTime electionPollsOpenDateTime;
