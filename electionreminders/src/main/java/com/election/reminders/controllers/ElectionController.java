@@ -73,7 +73,7 @@ public class ElectionController {
         logger.info("Updating election with updated info....");
         logger.info(electionInformationWithUpdatedInfo.toString());
         ElectionInformation electionInformationToUpdate = electionRepository.findById(id).orElseThrow();
-        electionInformationToUpdate.setCountryName(electionInformationWithUpdatedInfo.getCountryName());
+        electionInformationToUpdate.setCountryEntity(electionInformationWithUpdatedInfo.getCountryEntity());
         electionInformationToUpdate.setElectionDetails(electionInformationWithUpdatedInfo.getElectionDetails());
         electionInformationToUpdate.setElectionName(electionInformationWithUpdatedInfo.getElectionName());
         electionInformationToUpdate
