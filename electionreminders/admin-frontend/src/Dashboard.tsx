@@ -1,5 +1,7 @@
 import { Button, Table } from 'antd';
 import { useEffect, useState } from 'react';
+import { config } from '../config.ts';
+import { mockElectionSuggestions } from '../testElectionSuggestions.ts'
 import type { ElectionSuggestion, ElectionSuggestionFromBackend } from './types';
 
 function Dashboard() {
@@ -7,8 +9,17 @@ function Dashboard() {
 
     useEffect(() => {
         async function loadData() {
-            const response = await fetch('/electionSuggestionsFromDashboard'),
+            var returnedBackendData;
+
+            if (config.useMockData) {
+                console.log("Returning mock data!");
+                returnedBackendData = mockElectionSuggestions;
+            }
+            else {
+                const response = await fetch('/electionSuggestionsFromDashboard');
                 returnedBackendData = await response.json();
+            }
+
 
             console.log("data is", returnedBackendData);
             const mappedFrontEndData = returnedBackendData.map((backendData: ElectionSuggestionFromBackend) => {
@@ -110,6 +121,21 @@ function Dashboard() {
             title: 'Country Name',
             dataIndex: 'countryName',
             key: 'countryName'
+        },
+        {
+            title: 'Region Name',
+            dataIndex: 'regionName',
+            key: 'regionName'
+        },
+        {
+            title: 'City Name',
+            dataIndex: 'cityName',
+            key: 'cityName'
+        },
+        {
+            title: 'OrganizationName Name',
+            dataIndex: 'organizationName',
+            key: 'organizationName'
         },
         {
             title: 'Election Polls Open Date Time',
