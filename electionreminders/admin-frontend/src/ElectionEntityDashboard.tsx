@@ -88,8 +88,23 @@ function ElectionEntityDashboard() {
 
     async function addNewEntityName(newEntityRecord: any) {
         console.log("Adding new election name");
-        console.log(newEntityRecord);
+        console.log(newEntityRecord.newEntityName);
+        console.log(newEntityRecord.id);
 
+        const response = await fetch('/addEntityName', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([newEntityRecord]),
+        });
+
+        if (!response.ok) {
+            const returnedData = await response.json();
+            console.log("error is ");
+            console.log(returnedData);
+            throw new Error('Failed to update');
+        }
     }
 
 
