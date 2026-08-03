@@ -26,3 +26,18 @@ export type ElectionSuggestion = {
     electionDetails: string;
     electionSummary: string;
 };
+
+export type ElectionEntityFromBackend = {
+    id: string;
+    entityNames: string[];
+    entityType: string;
+    description: string;
+}
+
+export type ElectionEntity = {
+    id: string;
+    entityNames: string[];
+    entityType: string;
+    description: string;
+    newEntityName: string;
+}
