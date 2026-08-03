@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.election.reminders.dtos.jackson.responses.ElectionInformationDto;
+import com.election.reminders.persistence.ElectionEntity;
 import com.election.reminders.persistence.ElectionInformation;
+import com.election.reminders.repositories.ElectionEntityRepository;
 import com.election.reminders.repositories.ElectionRepository;
 import com.election.reminders.services.ElectionService;
 import com.election.reminders.utils.IJavaToJSONConverter;
@@ -27,14 +29,16 @@ public class ElectionController {
     private final ElectionService electionService;
     private final IJavaToJSONConverter javaToJSONConverter;
     private final ElectionRepository electionRepository;
+    private final ElectionEntityRepository electionEntityRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(ElectionController.class);
 
     public ElectionController(ElectionService electionService, IJavaToJSONConverter javaToJSONConverter,
-            ElectionRepository electionRepository) {
+            ElectionRepository electionRepository, ElectionEntityRepository electionEntityRepository) {
         this.electionRepository = electionRepository;
         this.electionService = electionService;
         this.javaToJSONConverter = javaToJSONConverter;
+        this.electionEntityRepository = electionEntityRepository;
     }
 
     @CrossOrigin(origins = Constants.FRONT_END_URL)
@@ -53,15 +57,52 @@ public class ElectionController {
 
     @PostMapping("/admin/elections")
     public void createElections(@RequestBody List<ElectionInformation> electionInformation) {
+        saveAndSetElectionEntities(electionInformation);
+
         logger.info("Saving elections");
         electionInformation.forEach((election) -> logger.info(election.toString()));
         electionRepository.saveAll(electionInformation);
+    }
+
+    private void saveAndSetElectionEntities(@RequestBody List<ElectionInformation> electionInformation){
+        logger.info("Saving election entities");
+        electionInformation.forEach((election) -> {
+            ElectionEntity returnedCountryEntity = saveElectionEntityToDatabase(electionEntityRepository,
+                    election.getCountryEntity());
+            election.setCountryEntity(returnedCountryEntity);
+            ElectionEntity returnedRegionEntity = saveElectionEntityToDatabase(electionEntityRepository,
+                    election.getRegionEntity());
+            election.setRegionEntity(returnedRegionEntity);
+            ElectionEntity returnedCityEntity = saveElectionEntityToDatabase(electionEntityRepository,
+                    election.getCityEntity());
+            election.setCityEntity(returnedCityEntity);
+            ElectionEntity returnedOrgEntity = saveElectionEntityToDatabase(electionEntityRepository,
+                    election.getOrganizationEntity());
+            election.setOrganizationEntity(returnedOrgEntity);
+    }
+
+    private ElectionEntity saveElectionEntityToDatabase(ElectionEntityRepository electionEntityRepository,
+            ElectionEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+        List<ElectionEntity> existing = electionEntityRepository
+                .findByAnyEntityName(entity.getEntityNames());
+
+        if (!existing.isEmpty()) {
+            System.out.println("Entity already exists - not saving!");
+            return existing.get(0);
+        } else {
+            electionEntityRepository.save(entity);
+            return null;
+        }
     }
 
     // Anyone calling this endpoint should do so from our dashboard.
     @PostMapping("/electionsFromDashboard")
     @PreAuthorize("hasRole('ADMIN')")
     public void createElectionsFromDashboard(@RequestBody List<ElectionInformation> electionInformation) {
+        saveAndSetElectionEntities(electionInformation);
         logger.info("Saving elections");
         electionInformation.forEach((election) -> logger.info(election.toString()));
         electionRepository.saveAll(electionInformation);
