@@ -10,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,17 +33,21 @@ public class ElectionInformation {
     @Column
     private String electionDetails;
 
-    @Column
-    private ElectionEntity countryEntity;
+    @ManyToOne
+    @JoinColumn(name = "countryEntity")
+    public ElectionEntity countryEntity;
 
-    @Column
-    private ElectionEntity regionEntity;
+    @ManyToOne
+    @JoinColumn(name = "regionEntity")
+    public ElectionEntity regionEntity;
 
-    @Column
-    private ElectionEntity cityEntity;
+    @ManyToOne
+    @JoinColumn(name = "cityEntity")
+    public ElectionEntity cityEntity;
 
-    @Column
-    private ElectionEntity organizationEntity;
+    @ManyToOne
+    @JoinColumn(name = "organizationEntity")
+    public ElectionEntity organizationEntity;
 
     @Column(nullable = false)
     private LocalDateTime electionPollsOpenDateTime;

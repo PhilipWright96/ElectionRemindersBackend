@@ -20,7 +20,8 @@ public class ElectionService {
     }
 
     public List<ElectionInformationDto> getElectionsForCountry(String countryName) {
-        final List<ElectionInformation> electionInfosForCountry = electionRepository.findByCountryName(countryName);
+        final List<ElectionInformation> electionInfosForCountry = electionRepository
+                .findByCountryEntityEntityNamesContaining(countryName);
         return electionInformationMapper
                 .electionInformationToElectionInformationDto(electionInfosForCountry);
     }

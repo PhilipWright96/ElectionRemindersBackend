@@ -10,5 +10,5 @@ import com.election.reminders.persistence.ElectionInformation;
 
 @Repository
 public interface ElectionRepository extends JpaRepository<ElectionInformation, UUID> {
-    List<ElectionInformation> findByCountryName(String countryName);
+    List<ElectionInformation> findByCountryEntityEntityNamesContaining(String countryName);
 }
